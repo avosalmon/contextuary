@@ -67,4 +67,4 @@ export default function Translate() {
       {/* Render your translations output here */}
     </div>
   );
-};
+}
