@@ -11,27 +11,27 @@ export default function Translate() {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-2xl font-bold mb-4">Context-aware Translation</h1>
+      <h1 className="mb-4 text-2xl font-bold">Context-aware Translation</h1>
 
-      <div className="bg-white p-6 rounded shadow">
-        <label className="block mb-2">Text to translate</label>
+      <div className="rounded bg-white p-6 shadow">
+        <label className="mb-2 block">Text to translate</label>
         <input
           type="text"
-          className="w-full p-2 mb-4 border rounded"
+          className="mb-4 w-full rounded border p-2"
           value={input}
           onChange={(e) => setInput(e.target.value)}
         />
 
-        <label className="block mb-2">Context</label>
+        <label className="mb-2 block">Context</label>
         <input
           type="text"
-          className="w-full p-2 mb-4 border rounded"
+          className="mb-4 w-full rounded border p-2"
           value={context}
           onChange={(e) => setContext(e.target.value)}
         />
 
-        <label className="block mb-2">Tone:</label>
-        <div className="flex items-center mb-4">
+        <label className="mb-2 block">Tone:</label>
+        <div className="mb-4 flex items-center">
           <input
             type="radio"
             id="formal"
@@ -57,7 +57,7 @@ export default function Translate() {
         </div>
 
         <button
-          className="bg-blue-500 text-white px-4 py-2 rounded"
+          className="rounded bg-blue-500 px-4 py-2 text-white"
           onClick={onSubmit}
         >
           Translate
