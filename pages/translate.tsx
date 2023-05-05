@@ -1,6 +1,8 @@
-import { useState } from "react";
+import { ReactElement, useState } from "react";
+import { NextPageWithLayout } from "./_app";
+import Layout from "@/components/layout";
 
-export default function Translate() {
+const Translate: NextPageWithLayout = () => {
   const [input, setInput] = useState<string>("");
   const [context, setContext] = useState<string>("");
   const [tone, setTone] = useState("formal");
@@ -67,4 +69,10 @@ export default function Translate() {
       {/* Render your translations output here */}
     </div>
   );
-}
+};
+
+Translate.getLayout = (page: ReactElement) => {
+  return <Layout>{page}</Layout>;
+};
+
+export default Translate;
