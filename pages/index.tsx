@@ -9,11 +9,11 @@ import Footer from "@/components/landing/footer";
 import FAQ from "@/components/landing/faq";
 
 const navigation = [
-  { name: "Lookup", href: "#" },
-  { name: "Translate", href: "#" },
-  { name: "Compare", href: "#" },
-  { name: "Review", href: "#" },
-  { name: "Pricing", href: "#" },
+  { name: "Lookup", href: "#lookup" },
+  { name: "Translate", href: "#translate" },
+  { name: "Compare", href: "#compare" },
+  { name: "Review", href: "#review" },
+  { name: "Pricing", href: "#pricing" },
 ];
 
 const Home: NextPageWithLayout = () => {
