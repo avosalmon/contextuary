@@ -145,14 +145,14 @@ const Home: NextPageWithLayout = () => {
                 embrace the future of language assistance, powered by context
                 and tone.
               </p>
-              <div className="mt-10">
+              <div className="mt-12">
                 <a
                   href="#"
-                  className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                  className="rounded-md bg-indigo-600 px-6 py-4 text-xl text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                 >
                   Get Started for Free
                 </a>
-                <p className="mx-auto mt-4 max-w-xl text-base leading-8 text-gray-500">
+                <p className="mx-auto mt-6 max-w-xl text-sm leading-8 text-gray-500">
                   No credit card required
                 </p>
               </div>
@@ -197,14 +197,14 @@ const Home: NextPageWithLayout = () => {
             Incididunt sint fugiat pariatur cupidatat consectetur sit cillum
             anim id veniam aliqua proident excepteur commodo do ea.
           </p>
-          <div className="mt-10">
+          <div className="mt-12">
             <a
               href="#"
-              className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+              className="rounded-md bg-indigo-600 px-6 py-4 text-xl text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
             >
               Get Started for Free
             </a>
-            <p className="mx-auto mt-4 max-w-xl text-base leading-8 text-gray-500">
+            <p className="mx-auto mt-6 max-w-xl text-sm leading-8 text-gray-500">
               No credit card required
             </p>
           </div>
