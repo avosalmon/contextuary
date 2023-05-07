@@ -135,16 +135,15 @@ const Home: NextPageWithLayout = () => {
         </div>
         <div className="py-24 sm:py-32 lg:pb-40">
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
-            <div className="mx-auto max-w-2xl text-center">
+            <div className="mx-auto max-w-3xl text-center">
               <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-                Unleash the Power of Context in Language
+                Master Language with a Context-Aware Assistant
               </h1>
               <p className="mt-6 text-lg leading-8 text-gray-600">
-                Welcome to Contextuary, the next-generation language tool that
-                revolutionizes the way you understand, learn, and communicate in
-                different languages. Say goodbye to awkward translations and
-                embrace the future of language assistance, powered by context
-                and tone.
+                Contextuary is the next-generation language tool that transforms
+                how you understand, learn, and communicate in different
+                languages. Say goodbye to awkward translations and embrace the
+                future of language assistance, powered by context and tone.
               </p>
               <div className="mt-12">
                 <a
@@ -192,11 +191,12 @@ const Home: NextPageWithLayout = () => {
       <div className="px-6 py-24 sm:px-6 sm:py-32 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
-            Ready to get started?
+            Experience the Difference
           </h2>
           <p className="mx-auto mt-6 max-w-xl text-lg leading-8 text-gray-600">
-            Incididunt sint fugiat pariatur cupidatat consectetur sit cillum
-            anim id veniam aliqua proident excepteur commodo do ea.
+            Join the growing community of users who trust Contextuary for all
+            their language needs. Unleash your full linguistic potential and
+            communicate with confidence across any situation.
           </p>
           <div className="mt-12">
             <a
