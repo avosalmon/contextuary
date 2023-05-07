@@ -10,11 +10,9 @@ const inter = Inter({
 export default function Layout({ children }: PropsWithChildren<{}>) {
   return (
     <div
-      className={`flex h-screen flex-col ${inter.variable} ${inter.className}`}
+      className={`flex min-h-screen flex-col items-center justify-between ${inter.variable} ${inter.className}`}
     >
-      <div className="container mx-auto px-4 py-8">
-        <div className="rounded bg-white p-6 shadow">{children}</div>
-      </div>
+      {children}
     </div>
   );
 }
