@@ -46,7 +46,7 @@ export default function Feature() {
           <p className="mt-6 text-lg leading-8 text-gray-600">
             In a world where communication is crucial, Contextuary delivers
             precise translations and meanings by considering the context and
-            tone of your input. Whether it's a casual conversation, a
+            tone of your input. Whether it{"'"}s a casual conversation, a
             professional email, or an academic text, our advanced algorithms
             ensure that your message is conveyed accurately and effectively.
           </p>
