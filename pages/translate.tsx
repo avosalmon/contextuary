@@ -2,6 +2,7 @@ import { ReactElement, useState } from "react";
 import { NextPageWithLayout } from "./_app";
 import Layout from "@/components/layout";
 import axios from "axios";
+import { useForm, SubmitHandler } from "react-hook-form";
 
 const tones = [
   { id: "casual", title: "Casual", checked: false },
@@ -9,20 +10,29 @@ const tones = [
   { id: "neutral", title: "Neutral", checked: true },
 ];
 
-const Translate: NextPageWithLayout = () => {
-  const [input, setInput] = useState<string>("");
-  const [context, setContext] = useState<string>("");
-  const [tone, setTone] = useState("formal");
+type Inputs = {
+  inputLanguage: string;
+  outputLanguage: string;
+  input: string;
+  context: string;
+  tone: string;
+  audience: string;
+};
 
-  const onSubmit = async () => {
-    await axios.post();
-  };
+const Translate: NextPageWithLayout = () => {
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm<Inputs>();
+  const onSubmit: SubmitHandler<Inputs> = (data) => alert(JSON.stringify(data));
 
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="mb-4 text-2xl font-bold">Translate</h1>
 
-      <form>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
           <div className="sm:col-span-3">
             <label className="block text-sm font-medium leading-6 text-gray-900">
@@ -30,8 +40,7 @@ const Translate: NextPageWithLayout = () => {
             </label>
             <div className="mt-2 flex">
               <select
-                id="input-language"
-                name="input_language"
+                {...register("inputLanguage")}
                 className="block w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 defaultValue="English"
               >
@@ -58,8 +67,7 @@ const Translate: NextPageWithLayout = () => {
               </div>
 
               <select
-                id="output-language"
-                name="output_language"
+                {...register("outputLanguage")}
                 className="block w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 defaultValue="Japanese"
               >
@@ -79,8 +87,8 @@ const Translate: NextPageWithLayout = () => {
             </label>
             <div className="mt-2">
               <textarea
+                {...register("input")}
                 id="input"
-                name="input"
                 rows={3}
                 className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 defaultValue={""}
@@ -103,8 +111,8 @@ const Translate: NextPageWithLayout = () => {
             </label>
             <div className="mt-2">
               <textarea
+                {...register("context")}
                 id="context"
-                name="context"
                 rows={3}
                 className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 defaultValue={""}
@@ -128,8 +136,8 @@ const Translate: NextPageWithLayout = () => {
                 {tones.map((tone) => (
                   <div key={tone.id} className="flex items-center">
                     <input
+                      {...register("tone")}
                       id={tone.id}
-                      name="tone"
                       type="radio"
                       defaultChecked={tone.checked}
                       className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
@@ -158,9 +166,9 @@ const Translate: NextPageWithLayout = () => {
             </label>
             <div className="mt-2">
               <input
-                type="text"
-                name="audience"
+                {...register("audience")}
                 id="audience"
+                type="text"
                 className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 placeholder="Friend"
               />
@@ -175,7 +183,6 @@ const Translate: NextPageWithLayout = () => {
             <button
               type="submit"
               className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-              // onClick={onSubmit}
             >
               Translate
             </button>
