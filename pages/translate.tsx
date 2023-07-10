@@ -1,4 +1,4 @@
-import { ReactElement } from "react";
+import { ReactElement, useState } from "react";
 import { NextPageWithLayout } from "./_app";
 import Layout from "@/components/layout";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -34,6 +34,8 @@ const schema = yup
   .required();
 
 const Translate: NextPageWithLayout = () => {
+  const [translation, setTranslation] = useState<Translation>();
+
   const {
     register,
     handleSubmit,
@@ -41,6 +43,7 @@ const Translate: NextPageWithLayout = () => {
   } = useForm<Inputs>({
     resolver: yupResolver(schema),
   });
+
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     axios
       .post<ApiResponse<Translation>>("/translations", {
@@ -54,7 +57,7 @@ const Translate: NextPageWithLayout = () => {
         requires_example: false,
       })
       .then((response) => {
-        alert(JSON.stringify(response.data.data));
+        setTranslation(response.data.data);
       });
   };
 
@@ -221,7 +224,8 @@ const Translate: NextPageWithLayout = () => {
         </div>
       </form>
 
-      {/* Render the translations output here */}
+      {/* Render the translation here */}
+      {translation && <div>{translation.translation}</div>}
     </div>
   );
 };
