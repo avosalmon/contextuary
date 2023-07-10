@@ -1,8 +1,11 @@
-import { ReactElement, useState } from "react";
+import { ReactElement } from "react";
 import { NextPageWithLayout } from "./_app";
 import Layout from "@/components/layout";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 import axios from "axios";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { Translation } from "@/types/translation";
 
 const tones = [
   { id: "casual", title: "Casual", checked: false },
@@ -19,14 +22,41 @@ type Inputs = {
   audience: string;
 };
 
+const schema = yup
+  .object({
+    inputLanguage: yup.string().required(),
+    outputLanguage: yup.string().required(),
+    context: yup.string(),
+    input: yup.string().required(),
+    tone: yup.string().required(),
+    audience: yup.string(),
+  })
+  .required();
+
 const Translate: NextPageWithLayout = () => {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
-  } = useForm<Inputs>();
-  const onSubmit: SubmitHandler<Inputs> = (data) => alert(JSON.stringify(data));
+  } = useForm<Inputs>({
+    resolver: yupResolver(schema),
+  });
+  const onSubmit: SubmitHandler<Inputs> = (data) => {
+    axios
+      .post<ApiResponse<Translation>>("/translations", {
+        input_language: data.inputLanguage,
+        output_language: data.outputLanguage,
+        input: data.input,
+        context: data.context,
+        tone: data.tone,
+        audience: data.audience,
+        requires_explaination: false,
+        requires_example: false,
+      })
+      .then((response) => {
+        alert(JSON.stringify(response.data.data));
+      });
+  };
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -138,6 +168,7 @@ const Translate: NextPageWithLayout = () => {
                     <input
                       {...register("tone")}
                       id={tone.id}
+                      value={tone.id}
                       type="radio"
                       defaultChecked={tone.checked}
                       className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
