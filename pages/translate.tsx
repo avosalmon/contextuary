@@ -26,8 +26,10 @@ const schema = yup
   .object({
     inputLanguage: yup.string().required(),
     outputLanguage: yup.string().required(),
+    input: yup
+      .string()
+      .required("Please enter a word, phrase, or sentence to translate."),
     context: yup.string(),
-    input: yup.string().required(),
     tone: yup.string().required(),
     audience: yup.string(),
   })
@@ -123,10 +125,17 @@ const Translate: NextPageWithLayout = () => {
                 {...register("input")}
                 id="input"
                 rows={3}
-                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                className={`
+                  block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6
+                  ${
+                    errors.input &&
+                    "text-red-900 ring-red-300 focus:ring-red-500"
+                  }
+                `}
                 defaultValue={""}
               />
             </div>
+            <p className="mt-2 text-sm text-red-600">{errors.input?.message}</p>
             <p className="mt-3 text-sm leading-6 text-gray-600">
               This could be anything from a single word to a complex sentence.
             </p>
