@@ -6,6 +6,7 @@ import * as yup from "yup";
 import axios from "axios";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { Translation } from "@/types/translation";
+import { classNames } from "@/libs/helpers";
 
 const tones = [
   { id: "casual", title: "Casual", checked: false },
@@ -125,13 +126,10 @@ const Translate: NextPageWithLayout = () => {
                 {...register("input")}
                 id="input"
                 rows={3}
-                className={`
-                  block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6
-                  ${
-                    errors.input &&
-                    "text-red-900 ring-red-300 focus:ring-red-500"
-                  }
-                `}
+                className={classNames(
+                  "block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6",
+                  errors.input && "text-red-900 ring-red-300 focus:ring-red-500"
+                )}
                 defaultValue={""}
               />
             </div>
